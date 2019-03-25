@@ -3,8 +3,8 @@
     <head>
         <title>jQuery Template Paging Example</title>
         <link rel="stylesheet" href="../styles.css">
-        <script type="text/javascript" src="../jquery-1.10.2.js"></script>
-        <script type="text/javascript" src="../jquery.loadTemplate-1.3.2.js"></script>
+        <script type="text/javascript" src="../jquery.js"></script>
+        <script type="text/javascript" src="../jquery.loadTemplate.js"></script>
         <script type="text/javascript">
          var curPage = 1;
          var templateData = null;
@@ -17,6 +17,8 @@
          }         
 
          function renderTemplates(data, pageNo) {
+            $("#container").loadTemplate($("#itemTemplate"), data["employees"], 
+                    {paged: true, pageNo: pageNo, elemPerPage: 1});
          }
 
          window.addEventListener("load", function(e) {
