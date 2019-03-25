@@ -2,7 +2,7 @@
 <html>
     <head>
         <title>Mustache Template Example using Functions</title>
-        <script type="text/javascript" src="../jquery-1.10.2.js"></script>
+        <script type="text/javascript" src="../jquery.js"></script>
         <script type="text/javascript" src="../mustache.js"></script>
         <script type="text/javascript">
          $("document").ready(function() {
@@ -16,6 +16,15 @@
                 ]
             };
             // define the function
+            prodData.total = function() {
+                return Math.round((this.price * 1.08) * 100) / 100;
+            };
+
+            prodData.decorate = function () {
+	            return function(text, render) {
+	            		return "<u>" + render(text) + "</u>";
+	            };
+            };
 
             var result = Mustache.render(template, prodData );
             $("#container").html(result);
@@ -26,8 +35,10 @@
         <script type="text/template" id="itemTemplate">
             <div class="itemTemplateWrapper">
                 {{#items}}
-                <div><span>Item: </span><span>{{name}}</span></div>
+                <div><span>Item: </span>{{#decorate}}<span>{{name}}</span>{{/decorate}}</div>
+                <div><span>Price: </span><span>{{total}}</span></div>
                 {{/items}}
+                
             </div>
         </script>
         <h1>Functions in Templates with Mustache JS</h1>
