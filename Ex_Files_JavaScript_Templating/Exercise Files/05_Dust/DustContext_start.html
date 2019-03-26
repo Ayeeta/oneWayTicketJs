@@ -3,7 +3,7 @@
     <head>
         <title>Dust Sections with Paths and Context</title>
         <link rel="stylesheet" href="../styles.css">
-        <script type="text/javascript" src="../jquery-1.10.2.js"></script>
+        <script type="text/javascript" src="../jquery.js"></script>
         <script type="text/javascript" src="../dust-full.js"></script>
         <script type="text/javascript">
          function renderTemplates(e) {
@@ -38,6 +38,22 @@
     </head>
     <body>
 
+
+      <script type="text/x-template" id="itemTemplate">
+        {#employee}
+          <div class="itemTemplateWrapper">
+            <div>{name}</div>
+            {#employee.department}
+                <div>{name}</div>
+                <div>{cost_center}</div>
+              {/employee.department}
+
+            <div>{title}</div>
+            <div>{email}</div>
+            <div>{phone}</div>
+          </div>
+        {/employee}
+      </script>
         <h1>Sections With Context in Templates with Dust.js</h1>
 
         <!-- This is the container where the templates will be instantiated -->
