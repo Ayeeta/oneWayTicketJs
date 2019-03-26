@@ -3,8 +3,8 @@
     <head>
         <title>Handlebars Conditionals and Loops Template Example</title>
         <link rel="stylesheet" href="../styles.css">
-        <script type="text/javascript" src="../jquery-1.10.2.js"></script>
-        <script type="text/javascript" src="../handlebars-v1.3.0.js"></script>
+        <script type="text/javascript" src="../jquery.js"></script>
+        <script type="text/javascript" src="../handlebars-v4.1.1.js"></script>
         <script type="text/javascript">
          $("document").ready(function() {
             var template = $("#itemTemplate").html();
@@ -43,6 +43,26 @@
         </script>
     </head>
     <body>
+
+
+      <script type="text/x-handlebars-template" id="itemTemplate">
+         {{#each employees}}
+         <div class="itemTemplateWrapper">
+             {{! This is a handlebars comment and it is totally ignored }}
+             <div>{{name}}</div>
+             <div>{{title}}</div>
+             <div>{{email}}</div>
+             <div>{{phone}}</div>
+
+             {{#if fulltime}}
+                    <div>Full-time employee</div>
+                {{else}}
+                    <div>Part-time employee</div>
+                {{/if}}
+
+         </div>
+         {{/each}}
+     </script>
 
         <h1>Conditionals and Loops in Templates with Handlebars JS</h1>
         <h3>Handlebars has support for basic logic built in.</h3>
